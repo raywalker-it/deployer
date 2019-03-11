@@ -139,7 +139,6 @@ connect:
 	--project $(GOOGLE_PROJECT_ID)
 
 secrets:
-	$(MAKE)
 	# Create Helm deploy secrets file from environment
 	envsubst < secrets.yaml.in > secrets.yaml
 	yamllint secrets.yaml
