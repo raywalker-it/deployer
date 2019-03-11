@@ -71,7 +71,7 @@ workflows:
   branch:
     jobs:
       - build-push:
-          context: org-global
+          context: raywalker-it-common
           filters:
             branches:
               ignore: master
@@ -83,21 +83,21 @@ workflows:
             branches:
               only: develop
       - notify-promote:
-          context: org-global
+          context: raywalker-it-common
           requires:
             - build-push
           filters:
             branches:
               only: develop
       - promote:
-          context: org-global
+          context: raywalker-it-common
           requires:
             - hold-promote
           filters:
             branches:
               only: develop
       - commit:
-          context: org-global
+          context: raywalker-it-common
           requires:
             - promote
           filters:
@@ -107,14 +107,14 @@ workflows:
   tag:
     jobs:
       - build-push:
-          context: org-global
+          context: raywalker-it-common
           filters:
             branches:
               ignore: /.*/
             tags:
               only: /^v.*/
       - commit:
-          context: org-global
+          context: raywalker-it-common
           filters:
             branches:
               ignore: /.*/
